@@ -73,8 +73,8 @@ def tts_generate_speech(character, text, output_file):
   print(f"Audio content written to file {output_file}")
   return output_file
 
-def play_wav(file_path_wav):
-  if os.uname().machine.startswith('arm'):
+def play_wav(file_path_wav, method="aplay"):
+  if method == "aplay":
     os.system(f'aplay {file_path_wav}')
   else:
     LocalAudioPlayer.play(file_path_wav)
