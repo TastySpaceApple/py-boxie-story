@@ -1,0 +1,25 @@
+sudo nano /etc/systemd/system/boxie.service
+
+
+
+[Unit]
+Description=Boxie
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/boxie/py-boxie-story/rfid.py
+WorkingDirectory=/home/boxie/py-boxie-story
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=boxie
+
+[Install]
+WantedBy=multi-user.target
+
+
+sudo systemctl daemon-reload
+sudo systemctl enable boxie.service
+sudo systemctl start boxie.service
+
+sudo journalctl -u boxie.service

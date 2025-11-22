@@ -17,7 +17,7 @@ history = []
 
 lastID = None
 
-boxie.talk(character, "שלום")
+boxie.talk(character, "התחלת המסע")
 
 try:
   while True:
