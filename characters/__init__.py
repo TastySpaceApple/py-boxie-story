@@ -1,5 +1,7 @@
 from .cat import cat
+from.wizard import wizard
 
 characters = {
-  "cat": cat
+  "cat": cat,
+  "wizard": wizard
 }

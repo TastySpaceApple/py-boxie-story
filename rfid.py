@@ -4,8 +4,7 @@ import time
 import RPi.GPIO as GPIO
 reader = SimpleMFRC522()
 
-character = "cat"
-rfidText = "בית קפה"
+character = "wizard"
 
 texts = {
   584189665081: "בית קפה",
@@ -13,6 +12,8 @@ texts = {
   584190189345: "בריכה",
   584191238097: "יער"
 }
+
+history = []
 
 lastID = None
 
@@ -29,6 +30,10 @@ try:
       user_message = texts.get(id, "לא ידוע")
       print(f"RFID Tag Detected. ID: {id}, Text: {user_message}")
       boxie_reply = boxie.talk(character, user_message)
+      history.append({
+        "user": user_message,
+        "bot": boxie_reply
+      })
     print(f"ID: {id}")
     time.sleep(1)
 finally:
