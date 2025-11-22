@@ -9,5 +9,6 @@ history_of_examples = [
 
 wizard = {
   "characterStory": character_story,
-  "historyOfExamples": history_of_examples
+  "historyOfExamples": history_of_examples,
+  "characterVoice": "You are a child wizard",
 }
