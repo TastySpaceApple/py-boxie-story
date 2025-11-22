@@ -1,4 +1,3 @@
-import simpleaudio as sa
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -75,9 +74,10 @@ def tts_generate_speech(character, text, output_file):
   return output_file
 
 def play_wav(file_path_wav):
-  simpleaudio_obj = sa.WaveObject.from_wave_file(file_path_wav)
-  play_obj = simpleaudio_obj.play()
-  play_obj.wait_done()  # Wait until sound has finished playing
+  if os.uname().machine.startswith('arm'):
+    os.system(f'aplay {file_path_wav}')
+  else:
+    LocalAudioPlayer.play(file_path_wav)
 
 def talk(character, user_message, history=None):
   boxie_reply = get_boxie_response(character, user_message, history)
