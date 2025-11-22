@@ -1,5 +1,6 @@
 from mfrc522 import SimpleMFRC522
 import boxie
+import time
 import RPi.GPIO as GPIO
 reader = SimpleMFRC522()
 
@@ -14,10 +15,13 @@ try:
     id, text = reader.read()
     if id != lastID:
       lastID = id
+      if(id == None):
+        continue
       print(f"RFID tag detected with ID: {id} and text: {text}")
       user_message = text.strip()
       boxie_reply = boxie.talk(character, user_message)
     print(f"ID: {id}")
     print(f"Text: {text}")
+    time.sleep(1)
 finally:
   GPIO.cleanup()
