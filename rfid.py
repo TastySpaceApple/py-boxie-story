@@ -4,7 +4,7 @@ import time
 import RPi.GPIO as GPIO
 reader = SimpleMFRC522()
 
-character = "wizard"
+character = "cat"
 
 texts = {
   584189665081: "בית קפה",
