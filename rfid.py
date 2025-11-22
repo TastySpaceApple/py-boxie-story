@@ -8,13 +8,15 @@ character = "cat"
 rfidText = "בית קפה"
 
 texts = {
-  584189665081: "בית קפה"
-  584189665080: "גן"
-  584189665079: "בריכה"
-  584189665078: "יער"
+  584189665081: "בית קפה",
+  584191500245: "גן",
+  584190189345: "בריכה",
+  584191238097: "יער"
 }
 
 lastID = None
+
+boxie.talk(character, "שלום")
 
 try:
   while True:
@@ -28,7 +30,6 @@ try:
       print(f"RFID Tag Detected. ID: {id}, Text: {user_message}")
       boxie_reply = boxie.talk(character, user_message)
     print(f"ID: {id}")
-    print(f"Text: {text}")
     time.sleep(1)
 finally:
   GPIO.cleanup()
